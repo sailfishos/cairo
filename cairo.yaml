@@ -1,0 +1,57 @@
+Name: cairo
+Summary: A vector graphics library
+Version: 1.10.2
+Release: 1
+Group: System/Libraries
+License: LGPLv2 or MPLv1.1
+Description: Cairo is a vector graphics library
+URL: http://www.cairographics.org
+
+Sources:
+    - http://cairographics.org/releases/%{name}-%{version}.tar.gz
+PkgConfigBR:
+    - xrender
+    - x11
+    - libpng
+    - libxml-2.0
+    - pixman-1
+    - freetype2
+    - fontconfig
+    - glib-2.0
+    - ix86:gl
+PkgBR:
+    - binutils-devel
+ConfigOptions:
+    - --enable-warnings
+    - --enable-xlib
+    - --enable-freetype
+    - --enable-ps
+    - --enable-pdf
+    - --enable-svg
+    - --enable-tee
+    - --enable-gobject
+    - ix86:--enable-gl
+    - --disable-gtk-doc
+    - arm:--disable-atomic
+SubPackages:
+    - Name: devel
+      Summary: Development components for the cairo library
+      Group: Development/Libraries
+      Description: Development package for the cairo library 
+      Requires:
+          - pixman-devel
+    - Name: trace 
+      Summary: cairo-trace utility
+      Description: cairo trace utility
+      Group: Development/Tools
+      License: GPLv3
+
+    - Name: gobject-devel
+      Summary: Development files for cairo-gobject
+      Group: Development/Libraries
+      Description: |
+          Cairo is a 2D graphics library designed to provide high-quality display
+          and print output.
+
+          This package contains libraries, header files and developer documentation
+          needed for developing software which uses the cairo Gobject library.

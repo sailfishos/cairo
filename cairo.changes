@@ -1,0 +1,74 @@
+* Sat Jun 04 2011 Anas Nashif <anas.nashif@intel.com> - 1.10.2
+- Do not depend on librsvg, since this is only needed for testing
+  This removes one big circular dependency
+
+* Thu May 19 2011 Anas Nashif <anas.nashif@intel.com> - 1.10.2
+- move documentation to -devel package
+
+* Tue May 10 2011 Anas Nashif <anas.nashif@intel.com> - 1.10.2
+- Update to 1.10.2
+- Enable gobject in a sub-package
+
+* Fri Apr 29 2011 Li Peng <peng.li@intel.com> - 1.10.0
+- Enable tee surface backend for cairo (BMC #15298)
+
+* Mon Jan 03 2011 Marko Saukko <marko.saukko@cybercom.com> - 1.10.0
+- Disabled OpenGL backend for ARM (BMC#11754).
+
+* Tue Oct 12 2010 Liu Xinyun <xinyun.liu@intel.com> - 1.10.0
+- Update to 1.10.0
+- Enable cairo's OpenGL surface backend feature 
+
+* Thu Aug 19 2010 Yan Li <yan.i.li@intel.com> - 1.9.12
+- Add a missing Requires to devel sub-package: pixman
+
+* Fri Jul 30 2010 Li Peng <peng.li@intel.com> - 1.9.12
+- add license info for cairo-trace package
+
+* Tue Jul 13 2010 Zhang Qiang<qiang.z.zhang@intel.com> - 1.9.12
+- Update to 1.9.12
+
+* Tue Jun 29 2010 Li Peng <peng.li@intel.com> - 1.9.6
+- Add subpackage for cairo-trace
+
+* Tue Jun 29 2010 Li Peng <peng.li@intel.com> - 1.9.6
+- exclude cairo-trace, which is GPLv3
+
+* Fri Mar 14 2010 Michael Meeks <michael.meeks@novell.com> - 1.9.6
+- fix cairo xlib surface crasher, bmc#1905
+
+* Fri Mar 12 2010 Anas Nashif <anas.nashif@intel.com> - 1.9.6
+- Remove dependency on gtk
+- Disable atomic on arm
+
+* Fri Feb 26 2010 Anas Nashif <anas.nashif@intel.com> - 1.9.6
+- Fixed spectacle file
+- Fied Group
+
+* Tue Feb 22 2010 Arjan van de Ven <arjan@linux.intel.com> - 1.9.6
+- update to 1.9.6
+
+* Tue Feb 16 2010 Arjan van de Ven <arjan@linux.intel.com> - 1.9.4
+- update to 1.9.4
+
+* Tue Jan 12 2010 Anas Nashif <anas.nashif@intel.com> - 1.8.8
+- Reduce installed docs and move them to -devel package
+
+* Sun Aug 30 2009 Anas Nashif <anas.nashif@intel.com> - 1.8.8
+- Update to 1.8.8
+
+* Fri Feb 13 2009 Anas Nashif <anas.nashif@intel.com> 1.8.6
+- Update to 1.8.6
+
+* Tue Dec 16 2008 Anas Nashif <anas.nashif@intel.com> 1.8.0
+- Update spec file using latest spec-builder
+
+* Tue Dec 16 2008 Anas Nashif <anas.nashif@intel.com> 1.8.0
+- Update spec file using latest spec-builder
+
+* Thu Dec 11 2008 Arjan van de Ven <arjan@linux.intel.com> 1.8.0
+- Clean up the spec file
+
+* Thu Sep 25 2008 Anas Nashif <anas.nashif@intel.com> 1.8.0
+- update to 1.8.0
+
