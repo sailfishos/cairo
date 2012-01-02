@@ -1,3 +1,6 @@
+* Mon Jan 02 2012 Marko Saukko <marko.saukko@cybercom.com> - 1.10.2
+- Fixes MER#24: Drop libGL dependency/support from cairo.
+
 * Sat Jun 04 2011 Anas Nashif <anas.nashif@intel.com> - 1.10.2
 - Do not depend on librsvg, since this is only needed for testing
   This removes one big circular dependency

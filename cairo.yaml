@@ -18,7 +18,6 @@ PkgConfigBR:
     - freetype2
     - fontconfig
     - glib-2.0
-    - ix86:gl
 PkgBR:
     - binutils-devel
 ConfigOptions:
@@ -30,7 +29,6 @@ ConfigOptions:
     - --enable-svg
     - --enable-tee
     - --enable-gobject
-    - ix86:--enable-gl
     - --disable-gtk-doc
     - arm:--disable-atomic
 SubPackages:
