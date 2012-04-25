@@ -7,7 +7,7 @@
 
 Name:       cairo
 Summary:    A vector graphics library
-Version:    1.10.2
+Version:    1.12.0
 Release:    1
 Group:      System/Libraries
 License:    LGPLv2 or MPLv1.1
@@ -123,6 +123,7 @@ gzip NEWS
 # >> files
 %doc COPYING-LGPL-2.1 COPYING-MPL-1.1 COPYING AUTHORS
 %{_libdir}/libcairo*.so.*
+%{_libdir}/cairo/cairo*.so*
 # << files
 
 
@@ -132,6 +133,7 @@ gzip NEWS
 %doc ChangeLog.gz NEWS.gz PORTING_GUIDE BUGS
 %{_includedir}/*
 %{_libdir}/libcairo*.so
+%{_libdir}/cairo/cairo*.so
 %{_libdir}/pkgconfig/*
 %{_datadir}/gtk-doc/html/cairo
 # << files devel
@@ -140,6 +142,7 @@ gzip NEWS
 %defattr(-,root,root,-)
 # >> files trace
 %{_bindir}/cairo-trace
+%{_bindir}/cairo-sphinx
 %exclude %{_libdir}/cairo/libcairo-trace.so
 %{_libdir}/cairo/libcairo-trace.so.*
 # << files trace
