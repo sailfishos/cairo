@@ -1,6 +1,6 @@
 Name: cairo
 Summary: A vector graphics library
-Version: 1.12.0
+Version: 1.12.2
 Release: 1
 Group: System/Libraries
 License: LGPLv2 or MPLv1.1
@@ -8,27 +8,31 @@ Description: Cairo is a vector graphics library
 URL: http://www.cairographics.org
 
 Sources:
-    - http://cairographics.org/releases/%{name}-%{version}.tar.gz
+    - http://cairographics.org/releases/%{name}-%{version}.tar.xz
 PkgConfigBR:
-    - xrender
-    - x11
+    - xrender >= 0.6
+    - xcb-render >= 0.16
     - libpng
-    - libxml-2.0
-    - pixman-1
-    - freetype2
-    - fontconfig
+    - freetype2 >= 9.7.3
+    - fontconfig >= 2.2.95
+    - pixman-1 > 0.22.0
     - glib-2.0
+    - gobject-2.0
+    - zlib
+    - libxml-2.0
 PkgBR:
+    - libGLESv2-devel
+    - libEGL-devel
     - binutils-devel
 ConfigOptions:
-    - --enable-warnings
     - --enable-xlib
-    - --enable-freetype
     - --enable-ps
     - --enable-pdf
     - --enable-svg
     - --enable-tee
+    - --enable-xml
     - --enable-gobject
+    - --enable-glesv2
     - --disable-gtk-doc
     - arm:--disable-atomic
 SubPackages:
@@ -39,8 +43,9 @@ SubPackages:
       Requires:
           - pixman-devel
     - Name: trace 
-      Summary: cairo-trace utility
-      Description: cairo trace utility
+      Summary: Trace utility for cairo
+      Description: |
+          %{summary}.
       Group: Development/Tools
       License: GPLv3
 
