@@ -48,6 +48,14 @@ Requires:   %{name} = %{version}-%{release}
 %description trace
 %{summary}.
 
+%package doc
+Summary:   Documentation for %{name}
+Group:     Documentation
+Requires:  %{name} = %{version}-%{release}
+
+%description doc
+%{summary}.
+
 
 %package gobject-devel
 Summary:    Development files for cairo-gobject
@@ -60,7 +68,6 @@ and print output.
 
 This package contains libraries, header files and developer documentation
 needed for developing software which uses the cairo Gobject library.
-
 
 
 %prep
@@ -86,7 +93,7 @@ needed for developing software which uses the cairo Gobject library.
     --disable-atomic
 %endif
 
-make %{?jobs:-j%jobs}
+make %{?_smp_mflags}
 
 %install
 rm -rf %{buildroot}
@@ -95,19 +102,22 @@ rm -rf %{buildroot}
 gzip ChangeLog
 gzip NEWS
 
+mkdir -p %{buildroot}%{_docdir}/%{name}-%{version}
+install -m0644 -t %{buildroot}%{_docdir}/%{name}-%{version} \
+        ChangeLog.gz NEWS.gz PORTING_GUIDE BUGS AUTHORS
+
 %post -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
 
 %files
 %defattr(-,root,root,-)
-%doc COPYING-LGPL-2.1 COPYING-MPL-1.1 COPYING AUTHORS
+%license COPYING-LGPL-2.1 COPYING-MPL-1.1 COPYING
 %{_libdir}/libcairo*.so.*
 %{_libdir}/cairo/cairo*.so*
 
 %files devel
 %defattr(-,root,root,-)
-%doc ChangeLog.gz NEWS.gz PORTING_GUIDE BUGS
 %{_includedir}/*
 %{_libdir}/libcairo*.so
 %{_libdir}/cairo/cairo*.so
@@ -126,3 +136,7 @@ gzip NEWS
 %{_includedir}/cairo/cairo-gobject.h
 %{_libdir}/libcairo-gobject.so
 %{_libdir}/pkgconfig/cairo-gobject.pc
+
+%files doc
+%defattr(-,root,root,-)
+%{_docdir}/%{name}-%{version}
