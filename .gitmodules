@@ -1,3 +1,3 @@
 [submodule "upstream"]
 	path = upstream
-	url = git://git.cairographics.org/git/cairo
+	url = https://git.sailfishos.org/mirror/cairo
