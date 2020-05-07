@@ -3,7 +3,6 @@ Name:       cairo
 Summary:    A vector graphics library
 Version:    1.16.0
 Release:    1
-Group:      System/Libraries
 License:    LGPLv2 or MPLv1.1
 URL:        http://www.cairographics.org
 Source0:    http://cairographics.org/releases/%{name}-%{version}.tar.xz
@@ -12,7 +11,7 @@ Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(freetype2) >= 9.7.3
 BuildRequires:  pkgconfig(fontconfig) >= 2.2.95
-BuildRequires:  pkgconfig(pixman-1) > 0.22.0
+BuildRequires:  pkgconfig(pixman-1) >= 0.30.0
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(zlib)
@@ -26,7 +25,6 @@ Cairo is a vector graphics library
 
 %package devel
 Summary:    Development components for the cairo library
-Group:      Development/Libraries
 Requires:   %{name} = %{version}-%{release}
 Requires:   pixman-devel
 
@@ -36,7 +34,6 @@ Development package for the cairo library
 %package trace
 Summary:    Trace utility for cairo
 License:    GPLv3
-Group:      Development/Tools
 Requires:   %{name} = %{version}-%{release}
 
 %description trace
@@ -44,7 +41,6 @@ Requires:   %{name} = %{version}-%{release}
 
 %package doc
 Summary:   Documentation for %{name}
-Group:     Documentation
 Requires:  %{name} = %{version}-%{release}
 
 %description doc
@@ -53,7 +49,6 @@ Requires:  %{name} = %{version}-%{release}
 
 %package gobject-devel
 Summary:    Development files for cairo-gobject
-Group:      Development/Libraries
 Requires:   %{name} = %{version}-%{release}
 
 %description gobject-devel
@@ -65,7 +60,7 @@ needed for developing software which uses the cairo Gobject library.
 
 
 %prep
-%setup -q -n %{name}-%{version}/upstream
+%autosetup -n %{name}-%{version}/upstream
 
 %build
 
@@ -77,11 +72,8 @@ needed for developing software which uses the cairo Gobject library.
     --enable-tee \
     --enable-xml \
     --enable-gobject \
-    --enable-glesv2 \
-    --disable-gtk-doc \
-%ifarch %{arm}
-    --disable-atomic
-%endif
+    --enable-glesv3 \
+    --disable-gtk-doc
 
 make %{?_smp_mflags}
 
