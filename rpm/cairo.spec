@@ -1,11 +1,11 @@
 Name:       cairo
 
 Summary:    A vector graphics library
-Version:    1.16.0
+Version:    1.17.4
 Release:    1
 License:    LGPLv2 or MPLv1.1
 URL:        http://www.cairographics.org
-Source0:    http://cairographics.org/releases/%{name}-%{version}.tar.xz
+Source0:    %{name}-%{version}.tar.xz
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(libpng)
@@ -38,14 +38,6 @@ Requires:   %{name} = %{version}-%{release}
 
 %description trace
 %{summary}.
-
-%package doc
-Summary:   Documentation for %{name}
-Requires:  %{name} = %{version}-%{release}
-
-%description doc
-%{summary}.
-
 
 %package gobject-devel
 Summary:    Development files for cairo-gobject
@@ -81,13 +73,6 @@ make %{?_smp_mflags}
 rm -rf %{buildroot}
 %make_install
 
-gzip ChangeLog
-gzip NEWS
-
-mkdir -p %{buildroot}%{_docdir}/%{name}-%{version}
-install -m0644 -t %{buildroot}%{_docdir}/%{name}-%{version} \
-        ChangeLog.gz NEWS.gz PORTING_GUIDE BUGS AUTHORS
-
 %post -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
@@ -104,12 +89,10 @@ install -m0644 -t %{buildroot}%{_docdir}/%{name}-%{version} \
 %{_libdir}/libcairo*.so
 %{_libdir}/cairo/cairo*.so
 %{_libdir}/pkgconfig/*
-#%{_datadir}/gtk-doc/html/cairo
 
 %files trace
 %defattr(-,root,root,-)
 %{_bindir}/cairo-trace
-%{_bindir}/cairo-sphinx
 %exclude %{_libdir}/cairo/libcairo-trace.so
 %{_libdir}/cairo/
 
@@ -118,7 +101,3 @@ install -m0644 -t %{buildroot}%{_docdir}/%{name}-%{version} \
 %{_includedir}/cairo/cairo-gobject.h
 %{_libdir}/libcairo-gobject.so
 %{_libdir}/pkgconfig/cairo-gobject.pc
-
-%files doc
-%defattr(-,root,root,-)
-%{_docdir}/%{name}-%{version}
