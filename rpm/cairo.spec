@@ -1,7 +1,7 @@
 Name:       cairo
 
 Summary:    A vector graphics library
-Version:    1.17.4
+Version:    1.17.8
 Release:    1
 License:    LGPLv2 or MPLv1.1
 URL:        http://www.cairographics.org
@@ -11,14 +11,16 @@ Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(freetype2) >= 9.7.3
 BuildRequires:  pkgconfig(fontconfig) >= 2.2.95
-BuildRequires:  pkgconfig(pixman-1) >= 0.30.0
+BuildRequires:  pkgconfig(pixman-1) >= 0.36.0
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  libGLESv2-devel
-BuildRequires:  libEGL-devel
-BuildRequires:  binutils-devel
+BuildRequires:  meson
+BuildRequires:  ccache
+
+
+# https://gitlab.freedesktop.org/cairo/cairo/-/merge_requests/467
+Patch0: cairo-1.17.8-ft-font-missing-glyph.patch
 
 %description
 Cairo is a vector graphics library
@@ -52,26 +54,28 @@ needed for developing software which uses the cairo Gobject library.
 
 
 %prep
-%autosetup -n %{name}-%{version}/upstream
+%autosetup -p1 -n %{name}-%{version}/upstream
 
 %build
 
-%autogen --disable-static \
-    --disable-xlib \
-    --enable-ps \
-    --enable-pdf \
-    --enable-svg \
-    --enable-tee \
-    --enable-xml \
-    --enable-gobject \
-    --enable-glesv3 \
-    --disable-gtk-doc
+%meson \
+    -Dfontconfig=enabled \
+    -Dfreetype=enabled \
+    -Dglib=enabled \
+    -Dgtk_doc=false \
+    -Dpng=enabled \
+    -Dspectre=disabled \
+    -Dsymbol-lookup=disabled \
+    -Dtee=disabled \
+    -Dtests=disabled \
+    -Dxcb=disabled \
+    -Dxlib=disabled \
+    -Dzlib=enabled
 
-make %{?_smp_mflags}
+%meson_build
 
 %install
-rm -rf %{buildroot}
-%make_install
+%meson_install
 
 %post -p /sbin/ldconfig
 
@@ -81,13 +85,11 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %license COPYING-LGPL-2.1 COPYING-MPL-1.1 COPYING
 %{_libdir}/libcairo*.so.*
-%{_libdir}/cairo/cairo*.so*
 
 %files devel
 %defattr(-,root,root,-)
 %{_includedir}/*
 %{_libdir}/libcairo*.so
-%{_libdir}/cairo/cairo*.so
 %{_libdir}/pkgconfig/*
 
 %files trace
