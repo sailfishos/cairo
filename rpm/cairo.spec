@@ -1,7 +1,7 @@
 Name:       cairo
 
 Summary:    A vector graphics library
-Version:    1.17.8
+Version:    1.18.0
 Release:    1
 License:    LGPLv2 or MPLv1.1
 URL:        http://www.cairographics.org
@@ -17,10 +17,6 @@ BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  meson
 BuildRequires:  ccache
-
-
-# https://gitlab.freedesktop.org/cairo/cairo/-/merge_requests/467
-Patch0: cairo-1.17.8-ft-font-missing-glyph.patch
 
 %description
 Cairo is a vector graphics library
