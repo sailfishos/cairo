@@ -1,10 +1,10 @@
 Name:       cairo
 
 Summary:    A vector graphics library
-Version:    1.18.0
+Version:    1.18.2
 Release:    1
 License:    LGPLv2 or MPLv1.1
-URL:        http://www.cairographics.org
+URL:        https://github.com/sailfishos/cairo
 Source0:    %{name}-%{version}.tar.xz
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
@@ -78,24 +78,20 @@ needed for developing software which uses the cairo Gobject library.
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %license COPYING-LGPL-2.1 COPYING-MPL-1.1 COPYING
 %{_libdir}/libcairo*.so.*
 
 %files devel
-%defattr(-,root,root,-)
 %{_includedir}/*
 %{_libdir}/libcairo*.so
 %{_libdir}/pkgconfig/*
 
 %files trace
-%defattr(-,root,root,-)
 %{_bindir}/cairo-trace
 %exclude %{_libdir}/cairo/libcairo-trace.so
 %{_libdir}/cairo/
 
 %files gobject-devel
-%defattr(-,root,root,-)
 %{_includedir}/cairo/cairo-gobject.h
 %{_libdir}/libcairo-gobject.so
 %{_libdir}/pkgconfig/cairo-gobject.pc
